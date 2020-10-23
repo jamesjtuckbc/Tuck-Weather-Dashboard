@@ -31,47 +31,128 @@
       <span class="navbar-brand mb-0 h1 mx-auto">Weather Dashboard</span>
     </nav>
     <main>
-    <div class="container no-gutters">
-      <div class="row">
-        <div class="col-4">
-          <aside>
-            <div class="container">
-              <div class="row">
-                  <div class="col-12">
-                  <label for="citySearchInput">Search for a City:</label>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-4">
+            <aside>
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <label for="citySearchInput">Search for a City:</label>
                   </div>
-              </div>
-              <div class="row">
+                </div>
+                <div class="row">
                   <div class="col-10">
-                  <div class="input-group">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="City Name"
-                      id="citySearchInput"
-                    />
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search"></i>
-                      </button>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="City Name"
+                        id="citySearchInput"
+                      />
+                      <div class="input-group-append">
+                        <button
+                          class="btn btn-primary"
+                          type="button"
+                          id="searchBtn"
+                        >
+                          <i class="fas fa-search"></i>
+                        </button>
                       </div>
                     </div>
                   </div>
+                </div>
+                <div class="row mt-4">
+                  <div class="col-10" id="savedCities"></div>
+                </div>
               </div>
-              <div class="row mt-4">
-                  <div class="col-10" id="savedCities">
-                    
+            </aside>
+          </div>
+          <div class="col-8">
+            <section>
+              <div class="row">
+                <div class="col">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title" id="selectedCity">Lehi</h5>
+                      <h6 id="temp" class="card-subtitle mt-5 mb-2">
+                        Temperature:
+                      </h6>
+                      <h6 id="humi" class="card-subtitle mt-3 mb-2">
+                        Humidity:
+                      </h6>
+                      <h6 id="wind" class="card-subtitle mt-3 mb-2">
+                        Wind Speed:
+                      </h6>
+                      <h6 id="uvin" class="card-subtitle mt-3 mb-2">
+                        UV Index:
+                      </h6>
+                    </div>
                   </div>
+                </div>
               </div>
-            </div>
-          </aside>
-        </div>
-        <div class="col-8">
-          <section>main</section>
+              <div class="row">
+                <div class="col">
+                  <h5 class="mt-3">5-Day Forecast:</h5>
+                </div>
+              </div>
+              <div id="5Day" class="row">
+                <div class="col">
+                    <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 id="day1Date" class="card-title mb-4"></h5>
+                          <h6 id="day1Icon" class="card-subtitle mb-4"><i class="fas fa-cloud-moon-rain"></i></h6>
+                          <h6 id="day1Temp" class="card-subtitle mb-4">Temp: </h6>
+                          <h6 id="day1Humi" class="card-subtitle mb-4">Humidity: </h6>
+                        </div>
+                      </div>
+                </div>
+                <div class="col">
+                    <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 id="day2Date" class="card-title mb-4"></h5>
+                          <h6 id="day2Icon" class="card-subtitle mb-4"><i class="fas fa-cloud-moon-rain"></i></h6>
+                          <h6 id="day2Temp" class="card-subtitle mb-4">Temp: </h6>
+                          <h6 id="day2Humi" class="card-subtitle mb-4">Humidity: </h6>
+                        </div>
+                      </div>
+                </div>
+                <div class="col">
+                    <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 id="day3Date" class="card-title mb-4"></h5>
+                          <h6 id="day3Icon" class="card-subtitle mb-4"><i class="fas fa-cloud-moon-rain"></i></h6>
+                          <h6 id="day3Temp" class="card-subtitle mb-4">Temp: </h6>
+                          <h6 id="day3Humi" class="card-subtitle mb-4">Humidity: </h6>
+                        </div>
+                      </div>
+                </div>
+                <div class="col">
+                    <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 id="day4Date" class="card-title mb-4"></h5>
+                          <h6 id="day4Icon" class="card-subtitle mb-4"><i class="fas fa-cloud-moon-rain"></i></h6>
+                          <h6 id="day4Temp" class="card-subtitle mb-4">Temp: </h6>
+                          <h6 id="day4Humi" class="card-subtitle mb-4">Humidity: </h6>
+                        </div>
+                      </div>
+                </div>
+                <div class="col">
+                    <div class="card text-white bg-primary">
+                        <div class="card-body">
+                          <h5 id="day5Date" class="card-title mb-4"></h5>
+                          <h6 id="day5Icon" class="card-subtitle mb-4"><i class="fas fa-cloud-moon-rain"></i></h6>
+                          <h6 id="day5Temp" class="card-subtitle mb-4">Temp: </h6>
+                          <h6 id="day5Humi" class="card-subtitle mb-4">Humidity: </h6>
+                        </div>
+                      </div>
+                </div>
+              </div>
+            </section>
+          </div>
         </div>
       </div>
-    </div>
-</main>
+    </main>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
