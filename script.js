@@ -80,8 +80,14 @@ $(document).ready(function () {
                 currentTemp.text('Temperature: ' + temperature + '°F');
                 currentHumi.text('Humidity: ' + humidity + '%');
                 currentWind.text('Wind Speed: ' + windSpeed + ' mph');
-                currentUvin.text('UV Index: ' + uvIndex);
                 selectedCity.html(city + ' ' + currentDate + '<img src="' + icon + '" alt = "' + iconAlt + '">');
+                if(uvIndex < 3){
+                    currentUvin.html('UV Index: ' + '<span class="text-success">' + uvIndex + '</span>');
+                } else if(uvIndex > 2 && uvIndex < 6){
+                    currentUvin.html('UV Index: ' + '<span class="text-warning">' + uvIndex + '</span>');
+                } else {
+                    currentUvin.html('UV Index: ' + '<span class="text-danger">' + uvIndex + '</span>');
+                }
             });
         });
 
