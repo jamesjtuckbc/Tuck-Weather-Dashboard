@@ -30,7 +30,7 @@
 ### Pages
 
 #### index.html
-![index.html]()
+![index.html](assets/weather-dashboard.png)
 
 - - -
 
