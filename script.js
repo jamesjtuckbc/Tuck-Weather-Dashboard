@@ -6,11 +6,20 @@ $(document).ready(function () {
     var currentUvin = $('#uvin');
     var selectedCity = $('#selectedCity');
     var fiveDay = $('#5Day');
-    var savedCities = $('#savedCities');
-    var cities = [];
+    var savedCitiesList = $('#savedCities');
+    var cities = JSON.parse(localStorage.getItem("savedContent")) || [];
 
     var currentDate = new Date().toLocaleDateString('en-US');
 
+    init();
+
+
+    function init(){
+        var savedCities = JSON.parse(localStorage.getItem("savedContent")) || [];
+        for(var i = 0; i < savedCities.length; i++){
+            savedCitiesList.append('<button type="button" class="city btn btn-outline-secondary btn-block text-left" id="' + savedCities[i] + '">' + savedCities[i] + '</button>')
+        }
+    }
 
 
 
@@ -72,24 +81,24 @@ $(document).ready(function () {
 
     $('#searchBtn').on('click', function (event) {
         var city = $('#citySearchInput').val();
-
+        $('#citySearchInput').val('')
         if (cities.includes(city)) {
             search(city);
         } else {
-            savedCities.append('<button type="button" class="city btn btn-outline-secondary btn-block text-left" id="' + city + '">' + city + '</button>')
+            savedCitiesList.append('<button type="button" class="city btn btn-outline-secondary btn-block text-left" id="' + city + '">' + city + '</button>')
             cities.push(city);
+            localStorage.removeItem("savedContent");
+            localStorage.setItem("savedContent", JSON.stringify(cities));
             search(city);
         }
     });
 
     $('#savedCities').on('click', '.city', function (event) {
         var city = $(this).attr('id');
-        console.log(city);
+        console.log(cities);
         search(city);
     });
 
-    // <button type="button" class="btn btn-outline-secondary btn-block text-left" id="savedCity1">Lehi, Utah</button>
-    // d-block
 
 
 
