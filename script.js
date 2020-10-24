@@ -14,13 +14,22 @@ $(document).ready(function () {
     init();
 
 
-    function init(){
+    function init() {
         var savedCities = JSON.parse(localStorage.getItem("savedContent")) || [];
-        for(var i = 0; i < savedCities.length; i++){
-            savedCitiesList.append('<button type="button" class="city btn btn-outline-secondary btn-block text-left" id="' + savedCities[i] + '">' + savedCities[i] + '</button>')
+        for (var i = 0; i < savedCities.length; i++) {
+            savedCitiesList.append('<button type="button" class="city btn btn-outline-secondary btn-block text-left" id="' + savedCities[i].name + '">' + savedCities[i].name + '</button>')
+        }
+        if (!Array.isArray(savedCities) || !savedCities.length) {
+
+        } else {
+            for (var j = 0; j < savedCities.length; j++) {
+                if (savedCities[j].lastSearched) {
+                    search(savedCities[j].name);
+                }
+            }
+
         }
     }
-
 
 
     function search(city) {
@@ -83,10 +92,17 @@ $(document).ready(function () {
         var city = $('#citySearchInput').val();
         $('#citySearchInput').val('')
         if (cities.includes(city)) {
+
             search(city);
         } else {
             savedCitiesList.append('<button type="button" class="city btn btn-outline-secondary btn-block text-left" id="' + city + '">' + city + '</button>')
-            cities.push(city);
+            for (var i = 0; i < cities.length; i++) {
+                cities[i].lastSearched = false;
+            };
+            cities.push({
+                name: city,
+                lastSearched: true
+            });
             localStorage.removeItem("savedContent");
             localStorage.setItem("savedContent", JSON.stringify(cities));
             search(city);
@@ -96,7 +112,17 @@ $(document).ready(function () {
     $('#savedCities').on('click', '.city', function (event) {
         var city = $(this).attr('id');
         console.log(cities);
+        for (var i = 0; i < cities.length; i++) {
+            if (cities[i].name === city) {
+                cities[i].lastSearched = true;
+            } else {
+                cities[i].lastSearched = false;
+            }
+        }
+        localStorage.removeItem("savedContent");
+        localStorage.setItem("savedContent", JSON.stringify(cities));
         search(city);
+        // search(city);
     });
 
 
